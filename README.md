@@ -1,7 +1,18 @@
 # READMEOW
 
-Project desc.
+A self-rewriting README powered by GitHub Actions to display cat gifs.
 
-## Content
-
-23:28:20
+<table>
+<tr>
+	<td>23:46:42</td><td>23:46:42</td><td>23:46:42</td>
+</tr>
+<tr>
+	<td>23:46:42</td><td>23:46:42</td><td>23:46:42</td>
+</tr>
+<tr>
+	<td>23:46:42</td><td>23:46:42</td><td>23:46:42</td>
+</tr>
+<tr>
+	<td>23:46:42</td><td>23:46:42</td><td>23:46:42</td>
+</tr>
+</table>
