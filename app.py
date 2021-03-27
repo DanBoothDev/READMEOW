@@ -4,9 +4,14 @@ PROJECT_ROOT = root = pathlib.Path(__file__).parent.resolve()
 TITLE = '# READMEOW\n'
 DESC = f'{TITLE}\nProject desc.\n\n'
 
+def get_time():
+    from datetime import datetime
+    now = datetime.now()
+    return now.strftime("%H:%M:%S")
 
 def generate_content():
-    return ['## Content\ntest']
+    section_header = '## Content\n\n'
+    return [section_header, f'{get_time()}']
 
 
 if __name__ == '__main__':
