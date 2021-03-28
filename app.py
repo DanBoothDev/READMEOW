@@ -1,57 +1,46 @@
+from os import environ
 import pathlib
-import requests
-import os
-import json
 from datetime import datetime
+import requests
 
-PROJECT_ROOT = root = pathlib.Path(__file__).parent.resolve()
+PROJECT_ROOT = pathlib.Path(__file__).parent.resolve()
 TITLE = '# READMEOW\n'
 DESC = f'{TITLE}\nA self-rewriting README powered by GitHub Actions to display cat gifs.\n\n'
-ITEMS_PER_ROW = 3
-
-API_KEY = os.environ.get('GIPHY_API_KEY')
-URL = f'http://api.giphy.com/v1/gifs/search'
-SEARCH_STR = 'CAT'
+# giphy params
+URL = f'https://api.giphy.com/v1/gifs/search'
 SEARCH_LIMIT = 12
 URL_PARAMS = params = {
-    "q": SEARCH_STR,
-    "api_key": API_KEY,
+    "q": 'cat',
+    "api_key": environ.get('GIPHY_API_KEY'),
     "limit": SEARCH_LIMIT
 }
 
-def get_current_time():
-    return datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
-
 
 def generate_content():
-    with requests.get(url=URL, params=URL_PARAMS, verify=False) as r:
+    with requests.get(url=URL, params=URL_PARAMS) as r:
         if r.status_code != 200:
             raise r.raise_for_status()
         return r.json().get('data')
     return None
 
 
-def generate_img(title, image):
-    source = image.get('url')
-    return f'![{title}]({source}) '
-
-def generate_table():
+def generate_rows():
     retval = [f'## Cats\n\n']
     for idx, content in enumerate(generate_content()):
-        img = generate_img(content.get('title'), content.get('images').get('fixed_height'))
-        retval.append(f'{img}')
+        img = content.get('images').get('fixed_height')
+        retval.append(f'![{content.get("title")}]({img.get("url")})\n')
     return retval
 
 
 if __name__ == '__main__':
-    readme_path = f'{root}/README.md'
-    with open(readme_path, "w") as f:
+    with open(f'{PROJECT_ROOT}/README.md', "w") as f:
         f.write(DESC)
         try:
-            for gif in generate_table():
+            for gif in generate_rows():
                 f.write(gif)
         except Exception as exc:
             import traceback
             traceback.print_exc()
             f.write(f'<p style="color:red">Error: {exc}</p>')
-        f.write(f'\n\nLast updated at {get_current_time()} UTC')
+        current_time = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+        f.write(f'\n\nLast updated at {current_time} UTC')
