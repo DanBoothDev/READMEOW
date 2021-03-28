@@ -18,24 +18,6 @@ URL_PARAMS = params = {
     "api_key": API_KEY,
     "limit": SEARCH_LIMIT
 }
-IMG_CSS = '\
-<style type="text/css"> \
-    #photos { \
-    /* Prevent vertical gaps */ \
-    line-height: 0; \
-    -webkit-column-count: 3; \
-    -webkit-column-gap:   0; \
-    -moz-column-count:    3; \
-    -moz-column-gap:      0; \
-    column-count:         3; \
-    column-gap:           0; \
-    } \
-    #photos img { \
-    width: 100% !important;\
-    height: auto !important;\
-    }\
-</style>'
-
 
 def get_current_time():
     return datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
@@ -50,19 +32,14 @@ def generate_content():
 
 
 def generate_img(title, image):
-    width = image.get('width')
-    height = image.get('height')
     source = image.get('url')
-    return f'<img src="{source}" width="{width}" height="{height}" title="{title}">'
+    return f'![{title}]({source}) '
 
 def generate_table():
-    retval = [f'## Cats\n\n{IMG_CSS}\n<section id="photos">\n']
+    retval = [f'## Cats\n\n']
     for idx, content in enumerate(generate_content()):
         img = generate_img(content.get('title'), content.get('images').get('downsized_medium'))
-        table_data = f'{img}'
-        # append the actual data
-        retval.append(table_data)
-    retval.append('</section>')
+        retval.append(f'{img}')
     return retval
 
 
