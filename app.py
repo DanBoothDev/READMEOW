@@ -31,9 +31,10 @@ def generate_content():
     return None
 
 
-def generate_img(source, title, image):
+def generate_img(title, image):
     width = image.get('width')
     height = image.get('height')
+    source = image.get('url')
     return f'<img src="{source}" width="{width}" height="{height}" title="{title}">'
 
 def generate_table():
@@ -47,7 +48,7 @@ def generate_table():
     retval += [table_header]
 
     for idx, content in enumerate(generate_content()):
-        img = generate_img(content.get('embed_url'), content.get('title'), content.get('images').get('downsized_small'))
+        img = generate_img(content.get('title'), content.get('images').get('downsized_medium'))
         table_data = f'<td>{img}</td>'
         if idx % ITEMS_PER_ROW == 0:
             if idx != 0:
