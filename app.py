@@ -24,11 +24,13 @@ def get_current_time():
 
 
 def generate_content():
+    data = None
     with requests.get(url=URL, params=URL_PARAMS, verify=False) as r:
         if r.status_code != 200:
             raise r.raise_for_status()
         data = r.json()
-    return json.dumps(data, sort_keys=True, indent=4)
+        print(json.dumps(data, sort_keys=True, indent=4))
+    return data
 
 
 def generate_table():
@@ -41,7 +43,7 @@ def generate_table():
     # setup table
     retval += [table_header]
 
-    for content in generate_content():
+    for idx, content in enumerate(generate_content()):
         table_data = f'<td>{content}</td>'
         if idx % ITEMS_PER_ROW == 0:
             if idx != 0:
