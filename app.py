@@ -38,7 +38,7 @@ def generate_img(title, image):
 def generate_table():
     retval = [f'## Cats\n\n']
     for idx, content in enumerate(generate_content()):
-        img = generate_img(content.get('title'), content.get('images').get('downsized_medium'))
+        img = generate_img(content.get('title'), content.get('images').get('fixed_height'))
         retval.append(f'{img}')
     return retval
 
