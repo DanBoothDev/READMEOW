@@ -2,17 +2,6 @@
 
 A self-rewriting README powered by GitHub Actions to display cat gifs.
 
-<table>
-<tr>
-	<td>23:58:09</td><td>23:58:09</td><td>23:58:09</td>
-</tr>
-<tr>
-	<td>23:58:09</td><td>23:58:09</td><td>23:58:09</td>
-</tr>
-<tr>
-	<td>23:58:09</td><td>23:58:09</td><td>23:58:09</td>
-</tr>
-<tr>
-	<td>23:58:09</td><td>23:58:09</td><td>23:58:09</td>
-</tr>
-</table>
+<p style="color:red">Error: 401 Client Error: Unauthorized for url: http://api.giphy.com/v1/gifs/search?q=CAT&limit=12</p>
+
+Last updated at 2021-03-28 00:59:57 UTC
