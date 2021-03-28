@@ -24,14 +24,17 @@ def get_current_time():
 
 
 def generate_content():
-    data = None
     with requests.get(url=URL, params=URL_PARAMS, verify=False) as r:
         if r.status_code != 200:
             raise r.raise_for_status()
-        data = r.json()
-        print(json.dumps(data, sort_keys=True, indent=4))
-    return data
+        return r.json().get('data')
+    return None
 
+
+def generate_img(source, title, image):
+    width = image.get('width')
+    height = image.get('height')
+    return f'<img src="{source}" width="{width}" height="{height}" title="{title}">'
 
 def generate_table():
     retval = []
@@ -44,7 +47,8 @@ def generate_table():
     retval += [table_header]
 
     for idx, content in enumerate(generate_content()):
-        table_data = f'<td>{content}</td>'
+        img = generate_img(content.get('embed_url'), content.get('title'), content.get('images').get('downsized_small'))
+        table_data = f'<td>{img}</td>'
         if idx % ITEMS_PER_ROW == 0:
             if idx != 0:
                 # close the previous row
@@ -68,5 +72,7 @@ if __name__ == '__main__':
             for gif in generate_table():
                 f.write(gif)
         except Exception as exc:
+            import traceback
+            traceback.print_exc()
             f.write(f'<p style="color:red">Error: {exc}</p>')
         f.write(f'\n\nLast updated at {get_current_time()} UTC')
