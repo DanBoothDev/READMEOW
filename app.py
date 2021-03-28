@@ -1,16 +1,34 @@
 import pathlib
+import requests
+import os
+import json
+from datetime import datetime
 
 PROJECT_ROOT = root = pathlib.Path(__file__).parent.resolve()
 TITLE = '# READMEOW\n'
 DESC = f'{TITLE}\nA self-rewriting README powered by GitHub Actions to display cat gifs.\n\n'
-ITEMS_TOTAL = 12
 ITEMS_PER_ROW = 3
+
+API_KEY = os.environ.get('GIPHY_API_KEY')
+URL = f'http://api.giphy.com/v1/gifs/search'
+SEARCH_STR = 'CAT'
+SEARCH_LIMIT = 12
+URL_PARAMS = params = {
+    "q": SEARCH_STR,
+    "api_key": API_KEY,
+    "limit": SEARCH_LIMIT
+}
+
+def get_current_time():
+    return datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
 
 def generate_content():
-    from datetime import datetime
-    now = datetime.now()
-    return now.strftime("%H:%M:%S")
+    with requests.get(url=URL, params=URL_PARAMS, verify=False) as r:
+        if r.status_code != 200:
+            raise r.raise_for_status()
+        data = r.json()
+    return json.dumps(data, sort_keys=True, indent=4)
 
 
 def generate_table():
@@ -23,8 +41,7 @@ def generate_table():
     # setup table
     retval += [table_header]
 
-    for idx in range(ITEMS_TOTAL):
-        content = generate_content()
+    for content in generate_content():
         table_data = f'<td>{content}</td>'
         if idx % ITEMS_PER_ROW == 0:
             if idx != 0:
@@ -43,8 +60,11 @@ def generate_table():
 
 if __name__ == '__main__':
     readme_path = f'{root}/README.md'
-    content = generate_table()
     with open(readme_path, "w") as f:
         f.write(DESC)
-        for gif in content:
-            f.write(gif)
+        try:
+            for gif in generate_table():
+                f.write(gif)
+        except Exception as exc:
+            f.write(f'<p style="color:red">Error: {exc}</p>')
+        f.write(f'\n\nLast updated at {get_current_time()} UTC')
