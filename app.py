@@ -42,5 +42,3 @@ if __name__ == '__main__':
             import traceback
             traceback.print_exc()
             f.write(f'<p style="color:red">Error: {exc}</p>')
-        current_time = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
-        f.write(f'\n\nLast updated at {current_time} UTC')
