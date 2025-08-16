@@ -2,17 +2,4 @@
 
 A self-rewriting README powered by GitHub Actions to display cat gifs.
 
-## Cats
-
-![White Cat Hello GIF](https://media1.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/vFKqnCdLPNOKc/200.gif)
-![Bored Cat GIF](https://media0.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mlvseq9yvZhba/200.gif)
-![Heat Wave Cat GIF](https://media3.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ToMjGppLes0ENI5osCc/200.gif)
-![No Way Cat GIF](https://media3.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/nR4L10XlJcSeQ/200.gif)
-![In Love Cat GIF](https://media1.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MDJ9IbxxvDUQM/200.gif)
-![Cat Working GIF](https://media0.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lJNoBCvQYp7nq/200.gif)
-![Cat Sup GIF](https://media4.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/sr8jYZVVsCmxddga8w/200.gif)
-![Cat Reaction GIF by MOODMAN](https://media1.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Lq0h93752f6J9tijrh/200.gif)
-![Cat Omg GIF](https://media4.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5i7umUqAOYYEw/200.gif)
-![Dance Cat GIF by Banggood](https://media2.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xJjs8eGVbjNYY/200.gif)
-![Excited Cat GIF](https://media1.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/FZuRP6WaW5qg/200.gif)
-![Cat Remember GIF](https://media4.giphy.com/media/v1.Y2lkPWEwY2MxZDU0N3RnaWE3aHdnMWRjcm85a3lybjA3M3c0bDc4ZHdsYnlsenFxOWFldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8vQSQ3cNXuDGo/200.gif)
+<p style="color:red">Error: HTTPSConnectionPool(host='api.giphy.com', port=443): Max retries exceeded with url: /v1/gifs/search?q=cat&api_key=PxwFZKlyMAWJIDH2uNMDQ9WE1oWze0fC&limit=12 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f37b783b730>: Failed to establish a new connection: [Errno 110] Connection timed out'))</p>
